@@ -9,8 +9,8 @@ import { firebaseConfig } from './config';
 
 
 export default function App() {
-  const [code, setCode] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [code, setCode] = useState('123456');
+  const [phoneNumber, setPhoneNumber] = useState('+91 1234567890');
   const [verificationId, setVerificationId] = useState(null);
   const recaptchaVerifier = useRef(null)
 
@@ -23,8 +23,8 @@ export default function App() {
     await phoneProvider.verifyPhoneNumber(phoneNumber, recaptchaVerifier.current)
       .then((res) => {
         console.log('res: ' + res)
-        setPhoneNumber(() => '')
         setVerificationId(res)
+        Alert.alert('Plz enter OTP')
       });
 
 
@@ -36,7 +36,6 @@ export default function App() {
     console.log('credential', credential)
     await firebase.auth().signInWithCredential(credential)
       .then(() => {
-        setCode('')
         console.log('login successfully')
         Alert.alert('login successfully')
       })
