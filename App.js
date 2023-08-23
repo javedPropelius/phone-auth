@@ -51,6 +51,7 @@ export default function App() {
       <FirebaseRecaptchaVerifierModal
         ref={recaptchaVerifier}
         firebaseConfig={firebaseConfig}
+        attemptInvisibleVerification={true}
       />
       <View >
         <Text>Please enter phone Number</Text>
